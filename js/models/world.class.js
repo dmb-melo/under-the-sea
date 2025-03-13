@@ -450,17 +450,35 @@ class World{
      * 
      * @returns {void}
      */
-    checkFinalEnemyAttack() {        
-        const finalEnemy = this.level.enemies.find(enemy => enemy instanceof FinalEnemy);
-        if (finalEnemy && finalEnemy.isAlive && this.character.isAlive()) { 
-            if (finalEnemy.x - this.character.x < 400) {
-                finalEnemy.finalEnemyIsAttacking();
-                console.log("attack character");        
-                this.character.attackFinalEnemy(() => {
-                    this.showWinningScreen();
-                });
-            }      }         
+    // checkFinalEnemyAttack() {        
+    //     const finalEnemy = this.level.enemies.find(enemy => enemy instanceof FinalEnemy);
+    //     if (finalEnemy && finalEnemy.isAlive && this.character.isAlive()) { 
+    //         if (finalEnemy.x - this.character.x < 400) {
+    //             finalEnemy.finalEnemyIsAttacking();
+    //             console.log("attack character");        
+    //             this.character.attackFinalEnemy(() => {
+    //                 this.showWinningScreen();
+    //             });
+    //         }      }         
      
+    // }
+
+    checkFinalEnemyAttack()  {     
+        
+        const attackFinalEnemyInterval = setInterval(() => {
+            const finalEnemy = this.level.enemies.find(enemy => enemy instanceof FinalEnemy);
+            
+    if (finalEnemy && finalEnemy.isAlive && this.character.isAlive()) { 
+        if (finalEnemy.x - this.character.x < 400) {
+            finalEnemy.finalEnemyIsAttacking();
+            console.log("attack character");        
+            this.character.attackFinalEnemy(() => {
+                this.showWinningScreen();
+                clearInterval(attackFinalEnemyInterval);
+                console.log("clearInterval");
+            });
+        }      } 
+        }, 9000);
     }
 
 }

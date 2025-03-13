@@ -216,11 +216,4 @@ class FinalEnemy extends MovableObject {
         return this.hitCount <= 4;
     }
 
-    /**
-     * Resets the final enemy's position.
-     */
-    reset() {
-        this.x = 1680;
-        this.y = 10;
-    }
 }
