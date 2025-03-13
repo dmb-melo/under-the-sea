@@ -460,9 +460,7 @@ class World{
                     this.showWinningScreen();
                 });
             }      }         
-        // } else if (!this.character.isAlive() && showStartScreen() && showTryAgainScreen()) {
-        //     finalEnemy.reset();
-        // }       
+     
     }
 
 }
